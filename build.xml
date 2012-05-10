@@ -4,7 +4,7 @@
     <property name="build" location="build" />
     <property name="dist" location="dist" />
     <property name="lib" location="lib" />
-    <property name="resources" location="resources" />
+    <!--<property name="resources" location="resources" />-->
     <property name="jd" location="javadocs" />
     <path id="classpath" >
         <fileset dir="${lib}" includes="**" />
@@ -27,9 +27,9 @@
         <copy todir="${build}" >
             <fileset dir="${src}" excludes="**/*.java,**/*.form" includes="**"/>
         </copy>
-        <copy todir="${build}/resources" >
+        <!--<copy todir="${build}/resources" >
             <fileset dir="${resources}" excludes="**/*.java,**/*.form" includes="**" />
-        </copy>
+        </copy>-->
         <jar basedir="${build}" compress="true" destfile="${dist}/${ant.project.name}.jar" ></jar>
         <copy todir="${build}" >
             <fileset dir="${src}" excludes="**/*.form" includes="**" />
