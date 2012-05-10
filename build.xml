@@ -43,7 +43,7 @@
                 sourcepath="${src}"
                 destdir="${jd}"
                 access="public"
-                windowtitle="AntiShare"
+                windowtitle="T2L Pages"
                 verbose="false"
                 author="true"
                 version="true">
