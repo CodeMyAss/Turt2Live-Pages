@@ -39,3 +39,18 @@ for(Player player : Bukkit.getOnlinePlayers()){
 ```
 
 That's it!
+
+If you want more control over the style in Pagination, extend Pagination yourself and set it, like so.
+
+```java
+public class MyPagination extends Pagination{
+	
+	public MyPagination(List<? extends Line> lines, Style style){
+		super(lines);
+		super.style = style; // Here is where the style is set
+	}
+	
+}
+```
+
+Of course there are more things you can override, simply take a look at the [JavaDocs](http://jd.t2ldev.com/PagesAPI) to play with the API!

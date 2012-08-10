@@ -12,6 +12,7 @@ import com.turt2live.pages.exception.NoPageException;
 import com.turt2live.pages.exception.NoPagesException;
 import com.turt2live.pages.exception.PageAlreadyExistsException;
 import com.turt2live.pages.styles.MenuStyle;
+import com.turt2live.pages.styles.Style;
 
 /**
  * Creates an easy to use "pagination"
@@ -23,6 +24,10 @@ public class Pagination {
 	private List<? extends Line> lines = new ArrayList<Line>();
 	private Menu menu;
 	private int pages = 0;
+	/**
+	 * Menu style, must be set before generate is called
+	 */
+	protected Style style = MenuStyle.DEFAULT.getStyle();
 
 	/**
 	 * Creates the pagination with the lines defined
@@ -47,7 +52,7 @@ public class Pagination {
 		menufactory.setPrefix(ChatColor.translateAlternateColorCodes('&', prefix), false);
 		menufactory.setTitle(title);
 		menufactory.setColors(mainColor, titleColor, pageColor);
-		menufactory.setStyle(MenuStyle.DEFAULT);
+		menufactory.setStyle(style);
 
 		int page = 1;
 		int line = 1;
