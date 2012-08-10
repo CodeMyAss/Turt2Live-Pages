@@ -1,13 +1,14 @@
 package com.turt2live.pages.styles;
 
-
 /**
  * An enum to represent various menu styles
  * 
  * @author turt2live
  */
 public enum MenuStyle{
-	DEFAULT(new BasicStyle());
+
+	DEFAULT(new BasicStyle()),
+	LAVA_CRAFT(new LavaCraftStyle());
 
 	private Style style;
 

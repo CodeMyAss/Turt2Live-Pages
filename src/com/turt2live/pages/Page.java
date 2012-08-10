@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2012 turt2live (Travis Ralston).
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Lesser Public License v2.1
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * 
+ * Contributors:
+ * turt2live (Travis Ralston) - initial API and implementation
+ ******************************************************************************/
 package com.turt2live.pages;
 
 import java.util.UUID;
@@ -14,7 +24,7 @@ import com.turt2live.pages.exception.InvalidPageException;
 public class Page {
 
 	protected static Page NULL_PAGE = new Page();
-	private String[] lines = new String[PageFactory.MAX_LINES];
+	private Line[] lines = new Line[PageFactory.MAX_LINES];
 	private int pageNumber = 1;
 	private UUID uid;
 
@@ -30,7 +40,7 @@ public class Page {
 	 * 
 	 * @param lines the lines
 	 */
-	protected void setLines(String[] lines){
+	protected void setLines(Line[] lines){
 		this.lines = lines;
 	}
 
@@ -64,7 +74,7 @@ public class Page {
 		if(line <= 0 || line > PageFactory.MAX_LINES){
 			throw new IndexOutOfBoundsException("Line does not exist");
 		}
-		lines[line - 1] = contents;
+		lines[line - 1] = new SimpleLine(contents);
 	}
 
 	/**
@@ -74,7 +84,7 @@ public class Page {
 	 * @return the line
 	 * @throws IndexOutOfBoundsException thrown if the line number does not exist
 	 */
-	public String getLine(int line) throws IndexOutOfBoundsException{
+	public Line getLine(int line) throws IndexOutOfBoundsException{
 		if(line <= 0 || line > PageFactory.MAX_LINES){
 			throw new IndexOutOfBoundsException("Line does not exist");
 		}
@@ -100,7 +110,8 @@ public class Page {
 		validate();
 		for(int i = 0; i < lines.length; i++){
 			if(lines[i] != null){
-				target.sendMessage(lines[i]);
+				lines[i].format();
+				target.sendMessage(lines[i].getLine());
 			}
 		}
 	}
